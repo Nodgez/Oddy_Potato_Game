@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcab8dc2b4156964897a9d928922e81d, type: 3}
+  m_Name: ThoddDystrictNetworkConfig 1
+  m_EditorClassIdentifier: 
+  chain: 0
+  network: mainnet
+  contractAddress: 0xD8e3Fa0B42F1de6dec81a540e7fb2388267D86d0
+  ipfsGateway: https://dweb.link/ipfs/

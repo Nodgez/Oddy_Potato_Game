@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: New Group 2480
+  m_EditorClassIdentifier: 
+  m_GroupName: New Group 2480
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 40831d64fbac4cf4aa31581d7f84ab09
+  m_SerializeEntries:
+  - m_GUID: 3fa34baca5fd11649868a00c568c280b
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2481.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 305ed1fe59c1e29468aacd875de2633c
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2482.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3fe4cb255750fa2448bfaa6251214b59
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2483.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8144ac13a47464b4084e65290a004176
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2484.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5f5d49bb16ad6e8469a69b4920fd5e58
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2485.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5e2dda7cef955a2479af29e2bf4afc6e
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2486.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8e2e62429ee6c6d47b03a98b904a9523
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2487.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 42c93bdfbf1dbbe4d91d2100398f349c
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2488.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 28ba9a5b3f406da4eba20fb0174105cf
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2489.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9699132f492ab5749b87f30c9e66cfa3
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2490.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 857f217d7a4581440bfb68602815c71a
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2491.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 06dbc4a6c52f2da4aa54cfde7fdd72bc
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2492.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ab1c7775f1bde5c41a3eabd64bf502b3
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2493.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: af41b1f33f220a54cb22627421597be2
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2494.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0ee581f1cfb2eed4fbc888a9437e7f57
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2495.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ce9c9d47542f62a459b77bebde5f2303
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2496.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c75f895d9ab046b45b6abcbcb33acc40
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2497.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5e02b0e2b19d10d41b8bd41c9cd92b4c
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2498.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 37d2fca144b1a1c439c4a1283a23edd4
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2499.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1ec3e0316ecc4cf40b4c518f5ff0494e
+    m_Address: Assets/Thoddys/ThoddyNoBG/2001-3000\2500.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: aee868fbc8bf8b04283dcad0bc11c2c6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 255f3af32c29d404285717f28d6e22c0, type: 2}
+    - {fileID: 11400000, guid: a51849c356215d24c87d8ca640df63ed, type: 2}
