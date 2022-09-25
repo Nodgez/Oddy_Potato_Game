@@ -18,11 +18,14 @@ public class Regular_Potato : Potato
         }
         scoringTrigger.IsTriggered = true;
 
+        renderer.enabled = false;
+        collider.enabled = false;
+
         var pEffect = Instantiate(collectEffect, this.transform.position, Quaternion.identity);
         pEffect.Play();
-
+        
         Destroy(pEffect.gameObject, pEffect.main.duration);
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, 0.1f);
     }
 
 }

@@ -12,12 +12,13 @@ public class OddySelectionUI : MonoBehaviour
 
     private Trigger oddySelectedTrigger;
 
-    public void AddOddyToDisplay(Sprite image, UnityAction buttonCallback)
+    public void AddOddyToDisplay(Sprite oddyImage, Sprite oddyBG, UnityAction buttonCallback)
     {
-
         var newOddyButton = Instantiate(oddyButton, oddyParent.transform);
         newOddyButton.onClick.AddListener(buttonCallback);
-        newOddyButton.GetComponent<Image>().sprite = image;
+        newOddyButton.name = oddyImage.name;
+        newOddyButton.transform.Find("Portrait").GetComponent<Image>().sprite = oddyImage;
+        newOddyButton.GetComponent<Image>().sprite = oddyBG;
         oddySelectedTrigger = newOddyButton.GetComponent<Trigger>();
         newOddyButton.onClick.AddListener(() =>
         {

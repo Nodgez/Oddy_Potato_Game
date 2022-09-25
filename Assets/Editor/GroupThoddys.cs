@@ -44,11 +44,15 @@ public class GroupThoddys : EditorWindow
                 return;
             }
 
-            for (int i = 0; i < fileCount; i+= bundleSize)
+            for (int i = 0; i < fileCount; i += bundleSize)
             {
                 var groupID = offset + i;
 
-                var group = settings.CreateGroup("New Group " + groupID.ToString(), false, false, true, settings.DefaultGroup.Schemas);
+                var group = settings.FindGroup(groupID.ToString());
+                if (group == null)
+                    group = settings.CreateGroup("New Group " + groupID.ToString(), false, false, true, settings.DefaultGroup.Schemas);
+
+
                 var entriesAdded = new List<AddressableAssetEntry>();
                 for (int j = 0; j < bundleSize; j++)
                 {
@@ -56,6 +60,11 @@ public class GroupThoddys : EditorWindow
                     var guid = AssetDatabase.AssetPathToGUID(assetPath);
 
                     var e = settings.CreateOrMoveEntry(guid, group, false, false);
+                    if (e == null)
+                    {
+                        Debug.LogError("Missing oddy asset: " + (offset + i + j + 1).ToString());
+                        continue;
+                    }
                     e.address = assetPath;
                     entriesAdded.Add(e);
                 }

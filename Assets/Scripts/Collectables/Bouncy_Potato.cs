@@ -27,6 +27,9 @@ public class Bouncy_Potato : Potato
         if (hitCount > 0)
             return;
 
+        renderer.enabled = false;
+        collider.enabled = false;
+
         Destroy(pEffect.gameObject, pEffect.main.duration);
         Destroy(this.gameObject);
     }

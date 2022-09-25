@@ -9,12 +9,22 @@ public class OddyLoader : MonoBehaviour
     public NFTLoader nftLoader;
     public OddySelectionUI oddySelectionUI;
     public Material oddyMaterial;
+    public SpriteRenderer backgroundRenderer;
 
+    [SerializeField] private ParticleSystem oddyGlitchEffect;
     [SerializeField] private TimeManagement timeManagement;
 
     private void Awake()
     {        
         nftLoader.nftCreated += CreateThumbnail;
+        nftLoader.onLoadComplete += oddySelectionUI.Show;
+    }
+
+
+    private void OnDestroy()
+    {
+        nftLoader.nftCreated -= CreateThumbnail;
+        nftLoader.onLoadComplete -= oddySelectionUI.Show;
     }
 
     private void CreateThumbnail(NFT oddy)
@@ -29,7 +39,7 @@ public class OddyLoader : MonoBehaviour
     private void CreateThumbnail(FullNFT oddy)
     {
         var oddySprite = Sprite.Create(oddy.image, new Rect(0, 0, oddy.image.width, oddy.image.height), Vector2.zero);
-        oddySelectionUI.AddOddyToDisplay(oddySprite, () =>
+        oddySelectionUI.AddOddyToDisplay(oddySprite, oddy.Background, () =>
         {
             //Start Timer
             timeManagement.StartTime(20);
@@ -42,13 +52,18 @@ public class OddyLoader : MonoBehaviour
 
             oddyObject.AddComponent<CapsuleCollider2D>();
             oddyObject.layer = LayerMask.NameToLayer("Player");
+
+            var glitchParticle = Instantiate<ParticleSystem>(oddyGlitchEffect, oddyObject.transform);
+            glitchParticle.transform.localPosition = Vector3.zero;
+            glitchParticle.transform.localRotation = Quaternion.identity;
         });
     }
 
     private void CreateThumbnail(SimpleNFT oddy)
     {
         var oddySprite = oddy.Sprite;
-        oddySelectionUI.AddOddyToDisplay(oddySprite, () =>
+        var oddyBG = oddy.Background;
+        oddySelectionUI.AddOddyToDisplay(oddySprite, oddyBG, () =>
         {
             //Start Timer
             timeManagement.StartTime(20);
@@ -62,6 +77,12 @@ public class OddyLoader : MonoBehaviour
             var collider = oddyObject.AddComponent<CapsuleCollider2D>();
             collider.offset = new Vector2(0, 1.75f);
             oddyObject.layer = LayerMask.NameToLayer("Player");
+
+            var glitchParticle = Instantiate<ParticleSystem>(oddyGlitchEffect, oddyObject.transform.GetChild(0));
+            glitchParticle.transform.localPosition = Vector3.zero;
+            glitchParticle.transform.localRotation = Quaternion.identity;
+
+            backgroundRenderer.sprite = oddy.Background;
         });
     }
 }

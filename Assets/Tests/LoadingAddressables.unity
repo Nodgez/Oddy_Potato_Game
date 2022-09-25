@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f4957d021158d4e8fed666e6f3e64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: Assets\Thoddys\ThoddyNoBG\1-1000\2.png
+  key: backgrounds
 --- !u!4 &19279747
 Transform:
   m_ObjectHideFlags: 0

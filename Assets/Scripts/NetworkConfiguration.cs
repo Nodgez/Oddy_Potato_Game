@@ -55,6 +55,12 @@ namespace Blockchain {
         public Texture2D image;
         public string name;
         public List<NFTAttribute> attributes = new List<NFTAttribute>();
+        private Sprite background;
+
+        public Sprite Background
+        {
+            get { return background; }
+        }
 
         public FullNFT(Texture2D image, string tokenID, string name, List<NFTAttribute> attributes)
         {
@@ -87,16 +93,23 @@ namespace Blockchain {
     public class SimpleNFT : NFT
     {
         private Sprite sprite;
+        private Sprite background;
         public Sprite Sprite
         { 
             get { return sprite; }
         }
 
-        public SimpleNFT(string tokenID, Sprite image)
+        public Sprite Background
         {
-            Debug.Log("Trying to load sprite id: " + tokenID);
+            get { return background; }
+        }
+
+        public SimpleNFT(string tokenID, Sprite image, Sprite background)
+        {
+            Debug.Log("Constructing Oddy:  " + tokenID);
             this.sprite = image;
             this.tokenID = tokenID;
+            this.background = background;
         }
 
         public GameObject CreateGameObject(Material defaultMaterial)

@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: New Group 4880
+  m_EditorClassIdentifier: 
+  m_GroupName: New Group 4880
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 8ae24898c50f91847b10c7d7646999b0
+  m_SerializeEntries:
+  - m_GUID: 23dfdc73f7a43a542ae342aea054e8fd
+    m_Address: 4881
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: caf1907997399fd47a943393f28dff32
+    m_Address: 4882
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ec311a783a90bb54e8b9569a7bb6d522
+    m_Address: 4883
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fe582e1ef17f5fd448296cfc880ba03c
+    m_Address: 4884
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6aebd19102b93c945baf5d8f29f10010
+    m_Address: 4885
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d2e44b106b345f946b48298b6e87118d
+    m_Address: 4886
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8f31c9236c1d82944bc95968f648fdec
+    m_Address: 4887
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0644e763e9c83ab45a11d79b0588e974
+    m_Address: 4888
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6e31be91f78cc5042973554262ac8b8d
+    m_Address: 4889
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c83410c26b100ec428bb486720bb9b6b
+    m_Address: 4890
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4b08a2ddaa800104585ab4bca3b20e8a
+    m_Address: 4891
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 200b6fea08225b64db4845116a0d0fe4
+    m_Address: 4892
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a3d02c19efe0bee41b920b7bd066f6f9
+    m_Address: 4893
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 78ffecb2616239e4c8fd6192958bb3e9
+    m_Address: 4894
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f0b96db695b0e89429bda725bf6b7cb0
+    m_Address: 4895
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e114e8f2e8e65d548973f26c37cef255
+    m_Address: 4896
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 665bc21afe9bec64e810c08cd01b10e2
+    m_Address: 4897
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f586b324dc565eb47b2f21eaaa5ba14d
+    m_Address: 4898
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6ebb451b2c697dc469af244323e6ea96
+    m_Address: 4899
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: eea933b6cd7e35f4985aad44c1e60935
+    m_Address: 4900
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: aee868fbc8bf8b04283dcad0bc11c2c6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 492e2ca39058edb4ab30c7f5be94638a, type: 2}
+    - {fileID: 11400000, guid: c5dd8cc18d3ce1e4f9ac023cb04db7b7, type: 2}

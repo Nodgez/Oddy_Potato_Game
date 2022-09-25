@@ -18,83 +18,83 @@ MonoBehaviour:
   m_GUID: 633147d723c9aa74da85df59fe60de45
   m_SerializeEntries:
   - m_GUID: e0cd2f909f512a942b8bb8bd958a96d8
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1601.png
+    m_Address: 1601
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: af3bf4e151f7a744283a72ca1cd87107
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1602.png
+    m_Address: 1602
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 1ca4c9a33c5206447ac2936e9d24380a
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1603.png
+    m_Address: 1603
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 221c7ae930e90ea42ad8e3fdb29352fe
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1604.png
+    m_Address: 1604
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 481f24ce3e11e0944a4292058a802038
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1605.png
+    m_Address: 1605
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 7ee934d639b782746b4915700d3f32a6
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1606.png
+    m_Address: 1606
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 978c5c19ddbdacc42884ab054f32fce8
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1607.png
+    m_Address: 1607
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 7023752a1a291384286bbc7558a8a0a4
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1608.png
+    m_Address: 1608
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: a223d971c4ddcd74db197ea2db8c9cf1
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1609.png
+    m_Address: 1609
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 51b2f49ced014974389d58b7e516b1cc
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1610.png
+    m_Address: 1610
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 94c43bb8d4d82d644953c6e0657c6e7c
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1611.png
+    m_Address: 1611
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: c2c9f4b413f78064fbfa3366abb55e45
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1612.png
+    m_Address: 1612
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 6d57b203f9a7d674f841296fcbc90ece
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1613.png
+    m_Address: 1613
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 91d8e444ed04ad549866804ff6d1f5d4
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1614.png
+    m_Address: 1614
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: d4d7d7525a49c6341b50e0e3e580327d
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1615.png
+    m_Address: 1615
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 36e57db9d755aa34d96a529ca0ea6b1d
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1616.png
+    m_Address: 1616
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: f0463a06bfec6b9469901e171c2f5dae
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1617.png
+    m_Address: 1617
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 90b97cc28801a5a4aafc2ea789d4d453
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1618.png
+    m_Address: 1618
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 5fdaa13a10e73fc4e990a35f5ca7a5a3
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1619.png
+    m_Address: 1619
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 1835d1bfea7803b408a958869b6a007b
-    m_Address: Assets/Thoddys/ThoddyNoBG/1001-2000\1620.png
+    m_Address: 1620
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

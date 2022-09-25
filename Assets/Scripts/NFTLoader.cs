@@ -15,19 +15,20 @@ public class NFTLoader : MonoBehaviour
 {
     private Dictionary<string, NFT> loadedNfts = new Dictionary<string, NFT>();
     public Action<NFT> nftCreated;
+    public Action onLoadComplete;
 
     [SerializeField] private NetworkConfiguration config;
     [SerializeField] private EventPool eventPool;
     [SerializeField] private Trigger trigger;
 
-    private AsyncOperationHandle<IList<Sprite>> oddysLoadingOp;
-    private List<string> nftIDs = new List<string>();
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Load();
-    }
+    private List<Sprite> oddyPortraits = new List<Sprite>();
+    private Dictionary<string, Sprite> oddyBackgrounds = new Dictionary<string, Sprite>();
 
+    private AsyncOperationHandle<IList<Sprite>> oddysLoadingOp;
+    private AsyncOperationHandle<IList<Sprite>> backgroundLoadingOp;
+
+    private List<string> nftIDs = new List<string>();
+    
     public void Load()
     {
         var account = PlayerPrefs.GetString("Account");
@@ -49,21 +50,16 @@ public class NFTLoader : MonoBehaviour
             foreach (var nft in erc721s)
             {
                 var idAsNumber = int.Parse(nft.tokenId);
-                var folderID = (idAsNumber / 1000) * 1000;
-                var folderPath = string.Format("{0}-{1}", folderID + 1, folderID + 1000);
-                var basePath = @"Assets/Thoddys/ThoddyNoBG/" + folderPath;
-                var fullPath = Path.Combine(basePath, nft.tokenId + ".png");
-                nftIDs.Add(fullPath);
+                nftIDs.Add(nft.tokenId);
 
-                Debug.Log("Added NFT ID: " + fullPath);
-                //CreateSimpleNFT(idAsNumber.ToString());
+                Debug.Log("Added NFT ID: " + nft.tokenId);
             }
 
-            oddysLoadingOp = Addressables.LoadAssetsAsync<Sprite>(nftIDs,
-            null,
-            Addressables.MergeMode.Union);
+            if (nftIDs.Count < 1)
+                nftIDs.Add("265");//Allow a user to play with one of my zena
 
-            oddysLoadingOp.Completed += OddysLoadingOp_Completed;
+            SaveDataManagement.Instance.SaveList<string>("nftIds.json", nftIDs);
+            RetrieveAssets();
         }
         catch
         {
@@ -73,19 +69,73 @@ public class NFTLoader : MonoBehaviour
         ImportantMessages.Instance.HideUI();
     }
 
-    private void OddysLoadingOp_Completed(AsyncOperationHandle<IList<Sprite>> opResults)
+    private void OddySpriteReceived(Sprite oddySprite)
     {
-        foreach (var s in opResults.Result)
+        oddyPortraits.Add(oddySprite);
+    }
+
+    private void BackgroundSpriteReceived(Sprite backgroundSprite)
+    {
+        oddyBackgrounds.Add(backgroundSprite.name, backgroundSprite);
+    }
+
+    //I should store the token id's locally and then check for changes from the wallet before looking to ipfs for data as it takes a long time
+    //maybe the UI flow should have a sync wallet function instead of just loading them on play
+    private async void RetrieveAssets()
+    {
+        ImportantMessages.Instance.ShowMessage("Getting portraits.....");
+
+        oddysLoadingOp = Addressables.LoadAssetsAsync<Sprite>(nftIDs, OddySpriteReceived, Addressables.MergeMode.Union);
+        await oddysLoadingOp;
+
+        ImportantMessages.Instance.ShowMessage("Getting backgrounds.....");
+
+        backgroundLoadingOp = Addressables.LoadAssetsAsync<Sprite>("backgrounds", BackgroundSpriteReceived);
+        await backgroundLoadingOp;
+
+        ImportantMessages.Instance.ShowMessage("Querying IPFS(This may take some time).....");
+
+        
+        foreach (var portrait in oddyPortraits)
         {
-            var oddyid = s.name;
-            Debug.Log("attempting to create oddy for: " + oddyid);
-            CreateSimpleNFT(oddyid, s);
+            var tokenId = portrait.name;
+            var tokenURI = await ERC721.URI(config.chain.ToString(), config.network, config.contractAddress, tokenId);
+            var requestURI = config.GetRequestURI(tokenURI);
+            var metadataRequest = UnityWebRequest.Get(requestURI);
+
+            await metadataRequest.SendWebRequest();
+
+            var data = System.Text.Encoding.UTF8.GetString(metadataRequest.downloadHandler.data);
+            var json = JSON.Parse(data);
+
+            var attributeArray = json["attributes"].AsArray;
+            Sprite backgroundSprite = null;
+            foreach (JSONNode jsNode in attributeArray)
+            {
+                if (jsNode["trait_type"] == "Backgrounds")
+                {
+                    var backgroundId = jsNode["value"].Value;
+                    if (oddyBackgrounds.ContainsKey(backgroundId))
+                        backgroundSprite = oddyBackgrounds[backgroundId];                   
+
+                    break;
+                }
+            }
+
+            var nft = new SimpleNFT(tokenId, portrait, backgroundSprite);
+            loadedNfts.Add(tokenId, nft);
+            nftCreated?.Invoke(nft);
         }
+
+        ImportantMessages.Instance.HideUI();
+
+        onLoadComplete?.Invoke();
     }
 
     private void OnDestroy()
     {
         Addressables.Release(oddysLoadingOp);
+        Addressables.Release(backgroundLoadingOp);
     }
 
     private async void CreateNFT(string tokenID)
@@ -123,32 +173,6 @@ public class NFTLoader : MonoBehaviour
         nftCreated?.Invoke(nft);
 
         ImportantMessages.Instance.HideUI();
-    }
-    
-    private void CreateSimpleNFT(string tokenID, Sprite image)
-    {
-        //ImportantMessages.Instance.ShowMessage("Requesting attributes for ODDY " + tokenID + ".....");
-        //var tokenURI = await ERC721.URI(config.chain.ToString(), config.network, config.contractAddress, tokenID);
-        //var requestURI = config.GetRequestURI(tokenURI);
-        //var metadataRequest = UnityWebRequest.Get(requestURI);
-
-        //await metadataRequest.SendWebRequest();
-
-        //var data = System.Text.Encoding.UTF8.GetString(metadataRequest.downloadHandler.data);
-        //var json = JSON.Parse(data);
-
-        //var imageURI = config.GetRequestURI(json["image"]);
-        //var pfpRequest = UnityWebRequestTexture.GetTexture(imageURI);
-
-        //await pfpRequest.SendWebRequest();
-        //var pfp = DownloadHandlerTexture.GetContent(pfpRequest);
-
-        
-        var nft = new SimpleNFT(tokenID, image);
-        loadedNfts.Add(tokenID, nft);
-        nftCreated?.Invoke(nft);
-
-        //ImportantMessages.Instance.HideUI();
     }
 
     public NFT GetLoadedNFT(string id)
