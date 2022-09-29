@@ -18,6 +18,14 @@ public class GameData : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
     }
+    
+    [MenuItem("DATA/Open Persistent Data Path")]
+    static void OpenPersistantDataPath()
+    {
+        var itemPath = Application.persistentDataPath;
+        itemPath = itemPath.Replace(@"/", @"\");   // explorer doesn't like front slashes
+        System.Diagnostics.Process.Start("explorer.exe", "/select," + itemPath);
+    }
 
     [MenuItem("Lighting/Force Reflection Probe Render")]
     static void BakeReflectionProbe()

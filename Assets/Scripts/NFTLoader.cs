@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Blockchain;
 using Newtonsoft.Json;
-using System.IO;
+using System.Linq;
 using SimpleJSON;
 using UnityEngine.Networking;
 using System;
@@ -13,12 +13,12 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class NFTLoader : MonoBehaviour
 {
+    private const string STOREDDATA = "nftIds.json";
     private Dictionary<string, NFT> loadedNfts = new Dictionary<string, NFT>();
     public Action<NFT> nftCreated;
     public Action onLoadComplete;
 
     [SerializeField] private NetworkConfiguration config;
-    [SerializeField] private EventPool eventPool;
     [SerializeField] private Trigger trigger;
 
     private List<Sprite> oddyPortraits = new List<Sprite>();
@@ -37,7 +37,7 @@ public class NFTLoader : MonoBehaviour
 
     public async void AddHeldTokensToIDs(string account)
     {
-        ImportantMessages.Instance.ShowMessage("Fetching THODDYS...");
+        ImportantMessages.Instance.ShowMessage("Fetching token id's...");
 
         int first = 500;
         int skip = 0;
@@ -51,22 +51,20 @@ public class NFTLoader : MonoBehaviour
             {
                 var idAsNumber = int.Parse(nft.tokenId);
                 nftIDs.Add(nft.tokenId);
-
-                Debug.Log("Added NFT ID: " + nft.tokenId);
             }
 
-            if (nftIDs.Count < 1)
-                nftIDs.Add("265");//Allow a user to play with one of my zena
-
-            SaveDataManagement.Instance.SaveList<string>("nftIds.json", nftIDs);
-            RetrieveAssets();
+            
+            //if (nftIDs.Count < 1)
+            //    nftIDs.Add("265");//Allow a user to play with one of my zena
+            if (nftIDs.Count > 0)
+                RetrieveAssets();
+            else
+                onLoadComplete?.Invoke();
         }
         catch
         {
             print("Error: " + response);
         }
-
-        ImportantMessages.Instance.HideUI();
     }
 
     private void OddySpriteReceived(Sprite oddySprite)
@@ -95,7 +93,44 @@ public class NFTLoader : MonoBehaviour
 
         ImportantMessages.Instance.ShowMessage("Querying IPFS(This may take some time).....");
 
-        
+        List<string> dataContainer = SaveDataManagement.Instance.LoadList("NFTData.json");
+        List<string> oldData = new List<string>();
+        foreach (var dataEntry in dataContainer)
+        {
+            var json = JSON.Parse(dataEntry);
+            var tokenId = json["tokenID"].Value;
+            var portrait = oddyPortraits.FirstOrDefault(x => x.name == tokenId);
+            if (portrait == null)
+            {
+                oldData.Add(dataEntry);
+                continue;
+            }
+
+            oddyPortraits.Remove(portrait);
+
+            var attributeArray = json["data"]["attributes"].AsArray;
+            Sprite backgroundSprite = null;
+            foreach (JSONNode jsNode in attributeArray)
+            {
+                if (jsNode["trait_type"] == "Backgrounds")
+                {
+                    var backgroundId = jsNode["value"].Value;
+                    if (oddyBackgrounds.ContainsKey(backgroundId))
+                        backgroundSprite = oddyBackgrounds[backgroundId];
+
+                    break;
+                }
+            }
+
+            var nft = new SimpleNFT(tokenId, portrait, backgroundSprite);
+            loadedNfts.Add(tokenId, nft);
+            nftCreated?.Invoke(nft);
+        }
+
+        dataContainer.RemoveAll(item => {
+            return oldData.Contains(item);
+        });
+
         foreach (var portrait in oddyPortraits)
         {
             var tokenId = portrait.name;
@@ -105,9 +140,21 @@ public class NFTLoader : MonoBehaviour
 
             await metadataRequest.SendWebRequest();
 
+            if (metadataRequest.result == UnityWebRequest.Result.ProtocolError)
+            {
+                print("Could not load item " + tokenId);
+                continue;
+            }
             var data = System.Text.Encoding.UTF8.GetString(metadataRequest.downloadHandler.data);
-            var json = JSON.Parse(data);
 
+            var storageNode = new JSONObject();
+            storageNode["tokenID"] = tokenId;
+            storageNode["data"] = JSON.Parse(data);
+            dataContainer.Add(storageNode.ToString());
+
+            print(string.Format("Parsing data for token {0}, \n{1}", tokenId, storageNode.ToString()));
+
+            var json = JSON.Parse(data);
             var attributeArray = json["attributes"].AsArray;
             Sprite backgroundSprite = null;
             foreach (JSONNode jsNode in attributeArray)
@@ -127,8 +174,8 @@ public class NFTLoader : MonoBehaviour
             nftCreated?.Invoke(nft);
         }
 
+        SaveDataManagement.Instance.SaveList<string>("NFTData.json", dataContainer);
         ImportantMessages.Instance.HideUI();
-
         onLoadComplete?.Invoke();
     }
 

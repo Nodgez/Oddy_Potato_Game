@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AppControls : MonoBehaviour
 {
@@ -37,5 +38,10 @@ public class AppControls : MonoBehaviour
     public void OpenWebSite()
     {
         Application.OpenURL("https://the-odd-dystrict.com/");
+    }
+    
+    public void ReloadWalletScene()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using Newtonsoft.Json;
 
 public class SaveDataManagement
 {
@@ -28,14 +29,24 @@ public class SaveDataManagement
     public void SaveList<T>(string fileName, List<T> data)
     {
         var filePath = Path.Combine(Application.persistentDataPath, fileName);
-        var dataAsJSON = JsonUtility.ToJson(data);
+        var dataAsJSON = JsonConvert.SerializeObject(data);
+        Debug.Log("Saving llist data as:\n" + dataAsJSON);
         File.WriteAllText(filePath, dataAsJSON);
     }
 
-    public void LoadList<T>(string fileName)
+    public List<string> LoadList(string fileName)
     {
         var filePath = Path.Combine(Application.persistentDataPath, fileName);
-        var unParsedData = File.ReadAllText(filePath);
-        var list = JsonUtility.FromJson<List<T>>(unParsedData);
+        var unParsedData = string.Empty;
+
+        var list = new List<string>();
+        if (!File.Exists(filePath))
+            return list;
+        else
+        {
+            unParsedData = File.ReadAllText(filePath);
+            list = JsonConvert.DeserializeObject<List<string>>(unParsedData);
+            return list;
+        }
     }
 }

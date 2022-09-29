@@ -33,6 +33,5 @@ public class ImportantMessages : MonoBehaviour
     public void HideUI()
     {
         canvasGroup.alpha = 0;
-
     }
 }
