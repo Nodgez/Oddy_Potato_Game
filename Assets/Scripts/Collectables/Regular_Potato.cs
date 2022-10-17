@@ -13,6 +13,7 @@ public class Regular_Potato : Potato
     {
         if (collision.CompareTag("Garbage"))
         {
+            onPotatoDestroyed?.Invoke();
             Destroy(this.gameObject);
             return;
         }
@@ -26,6 +27,8 @@ public class Regular_Potato : Potato
         
         Destroy(pEffect.gameObject, pEffect.main.duration);
         Destroy(this.gameObject, 0.1f);
+
+        onPotatoDestroyed?.Invoke();
     }
 
 }

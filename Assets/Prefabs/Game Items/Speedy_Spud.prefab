@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1.25
+  m_GravityScale: 0.25
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -153,5 +153,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoringTrigger: {fileID: -4896464117529462938}
   collectEffect: {fileID: 8717972365334234410, guid: 1ac1bbdc5ee613b46bc31f9dd3b9a911, type: 3}
-  multiplier: 2
-  duration: 2
+  multiplier: 2.25
+  duration: 3

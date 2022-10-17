@@ -91,8 +91,6 @@ public class NFTLoader : MonoBehaviour
         backgroundLoadingOp = Addressables.LoadAssetsAsync<Sprite>("backgrounds", BackgroundSpriteReceived);
         await backgroundLoadingOp;
 
-        ImportantMessages.Instance.ShowMessage("Querying IPFS(This may take some time).....");
-
         List<string> dataContainer = SaveDataManagement.Instance.LoadList("NFTData.json");
         List<string> oldData = new List<string>();
         foreach (var dataEntry in dataContainer)
@@ -131,8 +129,12 @@ public class NFTLoader : MonoBehaviour
             return oldData.Contains(item);
         });
 
+        var trackingIndex = 0;
         foreach (var portrait in oddyPortraits)
         {
+            ImportantMessages.Instance.ShowMessage(string.Format("Querying IPFS(This may take some time) {0}/{1}", trackingIndex, oddyPortraits.Count.ToString()));
+            trackingIndex++;
+
             var tokenId = portrait.name;
             var tokenURI = await ERC721.URI(config.chain.ToString(), config.network, config.contractAddress, tokenId);
             var requestURI = config.GetRequestURI(tokenURI);

@@ -10,6 +10,7 @@ public class Fast_Potato : Potato
     {
         if (collision.CompareTag("Garbage"))
         {
+            onPotatoDestroyed?.Invoke();
             Destroy(this.gameObject);
             return;
         }
@@ -21,6 +22,8 @@ public class Fast_Potato : Potato
         pEffect.Play();
         movement.StartCoroutine(SpeedUp(movement));
         Destroy(this.gameObject);
+
+        onPotatoDestroyed?.Invoke();
     }
 
     private IEnumerator SpeedUp(Movement movement)

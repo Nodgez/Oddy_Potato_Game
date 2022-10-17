@@ -15,6 +15,7 @@ public class Bouncy_Potato : Potato
     {
         if (collision.collider.CompareTag("Garbage"))
         {
+            onPotatoDestroyed?.Invoke();
             Destroy(this.gameObject);
             return;
         }
@@ -31,6 +32,7 @@ public class Bouncy_Potato : Potato
         collider.enabled = false;
 
         Destroy(pEffect.gameObject, pEffect.main.duration);
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, 0.1f);
+        onPotatoDestroyed?.Invoke();
     }
 }

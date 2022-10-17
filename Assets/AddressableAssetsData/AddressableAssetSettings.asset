@@ -378,6 +378,20 @@ MonoBehaviour:
         m_Value: ServerData/[BuildTarget]
       - m_Id: d0a5be170bba2944f8f44b1fc777f1ea
         m_Value: https://storage.googleapis.com/oddy_asset_bundle/oddy_asset_bundle[BuildTarget]
+    - m_InheritedParent: 
+      m_Id: 57845f2d89a90944ab5fd5654914645b
+      m_ProfileName: IPFS
+      m_Values:
+      - m_Id: cffa1dc5672b3b94f8f68bd527c36ee2
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
+      - m_Id: 22fa3993ac549794dad8718e0d582a83
+        m_Value: E:/Asset Bundles/IPFS/[BuildTarget]
+      - m_Id: f8cc949f30c0bef47b412b66435bacc2
+        m_Value: E:/Asset Bundles/IPFS/[BuildTarget]
+      - m_Id: c1089a4166f37fe47b55032b67d89b3b
+        m_Value: ServerData/IPFS/[BuildTarget]
+      - m_Id: d0a5be170bba2944f8f44b1fc777f1ea
+        m_Value: https://gateway.pinata.cloud/ipfs/QmYfKhcGiSj34t6jb8cbLHDVUrZuGkhgkBysgrcfGsQpYM/
     m_ProfileEntryNames:
     - m_Id: cffa1dc5672b3b94f8f68bd527c36ee2
       m_Name: BuildTarget
@@ -412,7 +426,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e9fe616c50ff32e43a68a91b49d8dca7, type: 2}
   - {fileID: 11400000, guid: f4f46b39e71535f44b92bae1224db51a, type: 2}
   - {fileID: 11400000, guid: 57975bc5341cf0044ac1b782a267e5f1, type: 2}
-  m_ActiveProfileId: 0cfbc242babeddd4abeda27ef628c891
+  m_ActiveProfileId: 57845f2d89a90944ab5fd5654914645b
   m_HostingServicesManager:
     m_HostingServiceInfos: []
     m_Settings: {fileID: 11400000}

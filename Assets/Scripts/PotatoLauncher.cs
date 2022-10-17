@@ -80,11 +80,11 @@ public class PotatoLauncher : MonoBehaviour
         var r2 = RollDice(2, 20);
         var r = Mathf.Max(r1, r2);
 
-        if (r < 16)
+        if (r < 5)
             potatoIndex = 3;//sluggish
-        else if (r < 25)
+        else if (r < 22)
             potatoIndex = 0;//regualr
-        else if (r < 35)
+        else if (r < 38)
             potatoIndex = 1;//bouncy
         else
             potatoIndex = 2;//speedy
@@ -97,8 +97,8 @@ public class PotatoLauncher : MonoBehaviour
         AudioSource.PlayClipAtPoint(portalSFX, location, 1);
 
         activeCooldown = Random.Range(minCooldown, maxCooldown);
-        Instantiate(potatos[potatoIndex], location, Quaternion.AngleAxis(Random.Range(0, 360), Vector3.forward));
-        potatoTracker--;
+        var potato = Instantiate(potatos[potatoIndex], location, Quaternion.AngleAxis(Random.Range(0, 360), Vector3.forward));
+        potato.onPotatoDestroyed += () => { potatoTracker--; };
     }
 
     private void MakeItRain()

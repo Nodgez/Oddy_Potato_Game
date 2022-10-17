@@ -48,7 +48,7 @@ public class OddyLoader : MonoBehaviour
                 return;
 
             var movement = oddyObject.AddComponent<Movement>();
-            movement.Speed = 5;
+            movement.Speed = 6;
 
             oddyObject.AddComponent<CapsuleCollider2D>();
             oddyObject.layer = LayerMask.NameToLayer("Player");
@@ -72,7 +72,7 @@ public class OddyLoader : MonoBehaviour
                 return;
 
             var movement = oddyObject.AddComponent<Movement>();
-            movement.Speed = 5;
+            movement.Speed = 6;
 
             var collider = oddyObject.AddComponent<CapsuleCollider2D>();
             collider.offset = new Vector2(0, 1.75f);
